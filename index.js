@@ -190,7 +190,7 @@ conn.sync({ force: true }).then(() => {
 			"accountId"    : '1',
 			"name"         : 'YPF',
 			"type"         : 'envio',
-			"movementType" : 'pago',
+			"movementType" : 'Pago',
 			"currency"     : 'dolares',
 			"description"  : '14/02/2021 - ruta 54 km 35',
 			"amount"       : '2500',
