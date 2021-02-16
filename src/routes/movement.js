@@ -130,4 +130,36 @@ server.get('/:userId', (req, res,) => {
   }) */
 })
 
+//envio dinero a un terceros
+server.post("/envio3eros/:cvu", async (req, res) => {
+  const { cvu } = req.params;
+  const { name, description, amount, contactId  } = req.body;
+  try {
+    const account = await Account.findOne({ //Busca la cuenta del usuario
+      where: { cvu: cvu, tipo: "pesos" } //Verifica la moneda
+    })
+    const movimiento = await Movement.create({ //Crea el movimiento 
+      name: account.email,
+      accountId: account.id,
+      type: "recibo",
+      movementType:"Transferencia",
+      currency : "pesos",
+      description,
+      amount,
+      contactId: contactId
+    }) 
+    await Account.update(                      // Le suma el Monto.
+      {
+        balance: (Number(account.balance) + Number(amount))
+      },
+      { where: { cvu: cvu, tipo: "pesos" } }
+    )
+    res.status(201).json(movimiento) //Retorna el movimiento
+
+  } catch (error) {
+    res.status(400).json(error)
+  }
+})
+
+
 module.exports = server;
