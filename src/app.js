@@ -18,7 +18,7 @@ server.use(cookieParser());
 server.use(morgan('dev'));
  server.use(
 	cors({
-		origin      : 'https://bank-tree.herokuapp.com',
+		origin      : 'https://http://localhost:19006',
 		credentials : true
 	})
 ); 
