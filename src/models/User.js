@@ -30,21 +30,21 @@ module.exports = (sequelize) => {
     },
     DNI: {
       type: DataTypes.STRING,
-      unique: true
+      //unique: true
     },
     firstName: {
       type: DataTypes.STRING,
-      validate: {
+     /* validate: {
         is: /^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/,
         len: [2, 40]
-      }
+      }*/
     },
     lastName: {
       type: DataTypes.STRING,
-      validate: {
+     /* validate: {
         is: /^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/,
         len: [2, 40]
-      }
+      }*/
     },
     birthdate: {
       type: DataTypes.DATEONLY,  // FORMATO==>>> 2020-01-22
