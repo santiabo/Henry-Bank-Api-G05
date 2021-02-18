@@ -222,13 +222,18 @@ server.put('/envio3', cors(rutatata), async (req, res, next) => {
     let { amount } = req.body;
 
     const account = await Account.findByPk(2); //Busca la cuenta por ID.
+	if(account){
     await account.update({
       balance: account.balance - amount // Le suma el Monto.
     })
-    res.status(200).json(account); // Devuelve la cuenta actualizada.
+		 res.status(200).json(account); // Devuelve la cuenta actualizada.
+	} else {
+		 res.status(400).json({ MjsError: "Llene los campos obligatorios" })
+	}  
+   
   }
   catch(error) {
-    next(error)
+    res.status(400).json({ MjsError: "Llene los campos obligatorios" })
   }
 })
 
