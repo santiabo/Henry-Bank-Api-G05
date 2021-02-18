@@ -4,7 +4,7 @@ const multer = require('multer');
 const express = require('express');
 const cors = require('cors');
 
-const server = express();
+
 
 const rutatata ={
 		origin      : 'https://bank-tree.herokuapp.com',
