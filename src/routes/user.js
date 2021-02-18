@@ -1,6 +1,16 @@
 const server = require('express').Router();
 const { User,Account, Movement, Contact } = require('../db.js');
 const multer = require('multer');
+const express = require('express');
+const cors = require('cors');
+
+const server = express();
+
+const rutatata = cors({
+		origin      : 'https://bank-tree.herokuapp.com',
+		credentials : true
+	})
+
 
 
 //obtener todos los usuarios
@@ -154,7 +164,7 @@ server.put('/alta/:id', /* upload.single('file'), */ async (req, res) => {
 		});
 });
 
-server.post('/alta/:id', async( req, res, next)=> {
+server.post('/alta/:id', rutatata, async( req, res, next)=> {
 const {id} = req.params;
 const  {
   firstName,
