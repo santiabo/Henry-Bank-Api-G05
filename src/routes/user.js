@@ -47,6 +47,20 @@ server.get('/:id', async (req, res, next) => {
 	}
 });
 
+
+//Borrar un usuario.
+server.delete('/:id', async (req, res, next) => {
+	try {
+		const { id } = req.params;
+		const result = await User.destroy({ where: { id }})
+    ;
+		if (result) return res.json(result);
+		return res.status(404).json({ Error: 'User not found' });
+	} catch (error) {
+		return next(error);
+	}
+});
+
 //editar información de un usuario
 //el dni, nombre y fecha de nacimiento no deben poder actualizar
 server.put('/:id', (req, res) => {
