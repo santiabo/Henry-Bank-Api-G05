@@ -217,7 +217,7 @@ server.put('/recarga/:id', async (req, res, next) => {
   }
 })
 
-server.put('/envio', async (req, res, next) => {
+server.put('/envio/:id', async (req, res, next) => {
   try {
    // const { id } = req.params;
    // let { monto } = req.body;
