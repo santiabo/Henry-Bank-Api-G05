@@ -218,20 +218,20 @@ server.put('/recarga/:id', async (req, res, next) => {
 })
 
 server.put('/envio', async (req, res, next) => {
-// const amount = 200;
-  //  let { amount } = req.body; 
-//const account = await Account.findByPk(2);
- await Account.update({
-      balance: 200 
-    }, { where: { id: 2 } })
-      .then(() => {
-        res.status(201);
-      })
-      .catch(() => {
-        res.status(400);
-      });
-
-  })
+  try {
+   // const { id } = req.params;
+   // let { monto } = req.body;
+   let monto = 1300
+    const account = await Account.findByPk(2); //Busca la cuenta por ID.
+    await account.update({
+      balance: account.balance - monto // Le suma el Monto.
+    })
+    res.status(200).json(account); // Devuelve la cuenta actualizada.
+  }
+  catch(error) {
+    next(error)
+  }
+})
 
 //comentario
 
