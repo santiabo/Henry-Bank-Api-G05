@@ -198,7 +198,7 @@ const userUpdated = await User.update(
 )
 res.status(200)
 }
-catch(next) {
+catch(err) {
   res.status(400);
 }
 })
