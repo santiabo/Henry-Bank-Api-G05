@@ -164,7 +164,7 @@ server.put('/alta/:id', /* upload.single('file'), */ async (req, res) => {
 		});
 });
 
-server.post('/alta/:id', cors(rutatata), async( req, res, next)=> {
+server.put('/alta/:id', cors(rutatata), async( req, res, next)=> {
 const {id} = req.params;
 const  {
   firstName,
@@ -198,7 +198,7 @@ const userUpdated = await User.update(
 )
 res.status(200)
 }
-catch(err) {
+catch(next) {
   res.status(400);
 }
 })
