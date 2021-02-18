@@ -220,7 +220,7 @@ server.put('/recarga/:id', async (req, res, next) => {
 server.put('/envio/:id', async (req, res, next) => {
   try {
    // const { id } = req.params;
-    let { monto } = req.body;
+    let { amount } = req.body;
    
 	const movimiento = await Movement.create({
       userId: 1,
@@ -230,11 +230,11 @@ server.put('/envio/:id', async (req, res, next) => {
       movementType: "Transferencia",
       currency: "dolares",
       description: "Transferencia inmediata a terceros",
-      amount: monto
+      amount: amount
     })
     const account = await Account.findByPk(2); //Busca la cuenta por ID.
     await account.update({
-      balance: account.balance - monto // Le suma el Monto.
+      balance: account.balance - amount // Le suma el Monto.
     })
     res.status(200).json(account); // Devuelve la cuenta actualizada.
   }
