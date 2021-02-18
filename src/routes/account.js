@@ -217,12 +217,12 @@ server.put('/recarga/:id', async (req, res, next) => {
   }
 })
 
-server.put('/envio', cors(rutatata), async (req, res, next) => {
+server.put('/envio', async (req, res, next) => {
 // const amount = 200;
   //  let { amount } = req.body; 
 //const account = await Account.findByPk(2);
  await Account.update({
-      balance:200 
+      balance: 200 
     }, { where: { id: 2 } })
       .then(() => {
         res.status(201);
