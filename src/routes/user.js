@@ -6,10 +6,10 @@ const cors = require('cors');
 
 const server = express();
 
-const rutatata = cors({
+const rutatata ={
 		origin      : 'https://bank-tree.herokuapp.com',
 		credentials : true
-	})
+	};
 
 
 
@@ -164,7 +164,7 @@ server.put('/alta/:id', /* upload.single('file'), */ async (req, res) => {
 		});
 });
 
-server.post('/alta/:id', rutatata, async( req, res, next)=> {
+server.post('/alta/:id', cors(rutatata), async( req, res, next)=> {
 const {id} = req.params;
 const  {
   firstName,
