@@ -1,7 +1,7 @@
 const server = require('express').Router();
 const { User,Account, Movement, Contact } = require('../db.js');
 const multer = require('multer');
-const express = require('express');
+
 const cors = require('cors');
 
 
