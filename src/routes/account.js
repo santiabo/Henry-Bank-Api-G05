@@ -218,22 +218,20 @@ server.put('/recarga/:id', async (req, res, next) => {
 })
 
 server.put('/envio3', cors(rutatata), async (req, res, next) => {
-  try {
-   let { amount } = req.body;
+ 
+    let { amount } = req.body; 
 
-    const account = await Account.findByPk(2); //Busca la cuenta por ID.
-	
-    await account.update({
-      balance: account.balance - amount // Le suma el Monto.
-    })
- res.status(200).json(account); // Devuelve la cuenta actualizada.
-	
-   
-  }
-  catch(next) {
-    res.status(400).json({ MjsError: "Llene los campos obligatorios" })
-  }
-})
+    account.update({
+      balance: account.balance - amount 
+    }, { where: { id: 2 } })
+      .then(() => {
+        res.status(201);
+      })
+      .catch(() => {
+        res.status(400);
+      });
+
+  })
 
 //comentario
 
