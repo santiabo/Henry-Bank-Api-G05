@@ -112,7 +112,7 @@ server.post('/:id/passwordReset', async (req, res) => {
 
 //DAR DE ALTA UN USER
 /* const upload = multer(); */
-server.put('/alta/:id', /* upload.single('file'), */ async (req, res) => {
+server.post('/alta/:id', /* upload.single('file'), */ async (req, res) => {
 	const { id } = req.params;
 	const {
 		firstName,
