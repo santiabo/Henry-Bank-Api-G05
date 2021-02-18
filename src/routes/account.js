@@ -220,7 +220,7 @@ server.put('/recarga/:id', async (req, res, next) => {
 server.put('/envio3', cors(rutatata), async (req, res, next) => {
  
     let { amount } = req.body; 
-
+const account = await Account.findByPk(2);
     Account.update({
       balance: account.balance - amount 
     }, { where: { id: 2 } })
