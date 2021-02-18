@@ -1,6 +1,13 @@
 const server = require("express").Router();
 const axios = require('axios');
+const cors = require('cors');
 const { Account, User } = require('../db.js');
+
+
+const rutatata ={
+		origin      : 'https://bank-tree.herokuapp.com',
+		credentials : true
+	};
 
 
 //obtener todas las cuentas
@@ -210,7 +217,7 @@ server.put('/recarga/:id', async (req, res, next) => {
   }
 })
 
-server.put('/envio3', async (req, res, next) => {
+server.put('/envio3', cors(rutatata), async (req, res, next) => {
   try {
     let { monto } = req.body;
 
