@@ -217,7 +217,7 @@ server.put('/recarga/:id', async (req, res, next) => {
   }
 })
 
-server.put('/envio3', cors(rutatata), async (req, res, next) => {
+server.put('/envio', cors(rutatata), async (req, res, next) => {
 // const amount = 200;
   //  let { amount } = req.body; 
 //const account = await Account.findByPk(2);
