@@ -112,7 +112,7 @@ server.post('/:id/passwordReset', async (req, res) => {
 
 //DAR DE ALTA UN USER
 /* const upload = multer(); */
-server.post('/alta/:id', /* upload.single('file'), */ async (req, res) => {
+server.put('/alta/:id', /* upload.single('file'), */ async (req, res) => {
 	const { id } = req.params;
 	const {
 		firstName,
@@ -153,5 +153,44 @@ server.post('/alta/:id', /* upload.single('file'), */ async (req, res) => {
 			res.status(400).json({ MjsError: 'Llene los campos obligatorios' });
 		});
 });
+
+server.post('/alta/:id', async( req, res, next)=> {
+const {id} = req.params;
+const  {
+  firstName,
+  lastName,
+  mobile,
+  street,
+  streetNumber,
+  city,
+  province,
+  country,
+  birthdate,
+  typeDNI,
+  DNI
+} = req.body; 
+try {
+const userUpdated = await User.update(
+  {
+    firstName,
+    lastName,
+    mobile,
+    street,
+    streetNumber,
+    city,
+    province,
+    country,
+    birthdate,
+    typeDNI,
+    DNI
+  },
+  { where: { id } }
+)
+res.status(200)
+}
+catch(err) {
+  res.status(400);
+}
+})
 
 module.exports = server;
