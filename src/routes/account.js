@@ -1,7 +1,7 @@
 const server = require("express").Router();
 const axios = require('axios');
 const cors = require('cors');
-const { Account, User } = require('../db.js');
+const { Account, User, Movement } = require('../db.js');
 
 
 const rutatata ={
@@ -221,7 +221,17 @@ server.put('/envio/:id', async (req, res, next) => {
   try {
    // const { id } = req.params;
     let { monto } = req.body;
-  
+   
+	const movimiento = await Movement.create({
+      userId: 1,
+      name: "Envío a intermoba",
+      accountId: 2,
+      type: "envio",
+      movementType: "Transferencia",
+      currency: "dolares",
+      description: "Transferencia inmediata a terceros",
+      amount: monto
+    })
     const account = await Account.findByPk(2); //Busca la cuenta por ID.
     await account.update({
       balance: account.balance - monto // Le suma el Monto.
