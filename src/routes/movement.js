@@ -139,7 +139,7 @@ server.post("/envio3eros/:cvu", async (req, res) => {
       where: { cvu: cvu, tipo: "pesos" } //Verifica la moneda
     })
     const movimiento = await Movement.create({ //Crea el movimiento 
-      name: account.email,
+      name: "cvu " + contactId,
       accountId: account.id,
       type: "recibo",
       movementType:"Transferencia",
