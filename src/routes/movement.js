@@ -146,7 +146,8 @@ server.post("/envio3eros/:cvu", async (req, res) => {
       currency : "pesos",
       description,
       amount,
-      contactId: contactId
+      contactId: contactId,
+      userId: account.userId
     }) 
     await Account.update(                      // Le suma el Monto.
       {
