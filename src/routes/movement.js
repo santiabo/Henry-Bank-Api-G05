@@ -1,7 +1,7 @@
 const server = require("express").Router();
 const { Movement, Account, User } = require('../db.js');
 
-//obtener todos los movimientos
+////obtener todos los movimientos
 server.get('/', (req, res, next) => {
   Movement.findAll({
     include: {
